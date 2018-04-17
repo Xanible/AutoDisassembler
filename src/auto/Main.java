@@ -8,20 +8,20 @@ public class Main {
 
 	
 	public static void main(String[] args) {
-		File dir = new File("G:\\My Drive\\Malware-Corpus\\Android\\Infected\\Androzoo");
-		File outputDir = new File("G:\\My Drive\\Android Classification\\Disassembly\\Baksmali\\malware");
+		File dir = new File("C:\\users\\colbyadmin\\desktop\\applications\\benign");
+		
 		File[] files = dir.listFiles();
 		
 		for (File f : files) {
 			Process p;
 	        try {
 	        	p = Runtime.getRuntime().exec("java -jar"
-	        			+ " C:\\Users\\colby\\Desktop\\SCHOOL\\AndroidCT\\Tools\\baksmali-2.2.2.jar d -o "
-	            + "D:\\Disassembly\\malware"
+	        			+ " C:\\Users\\colbyadmin\\Desktop\\baksmali.jar d -o "
+	            + "C:\\Users\\colbyadmin\\Desktop\\Disassembly\\baksmali\\original\\Benign"
 	            + File.separator + f.getName() + " " 
-	            + "\"G:\\My Drive\\Malware-Corpus\\Android\\Infected\\Androzoo"
+	            + "C:\\Users\\colbyAdmin\\desktop\\applications\\benign"
 	            + File.separator
-	            + f.getName() + "\"");
+	            + f.getName());
 	            
 	        	BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
 	        	
@@ -29,6 +29,7 @@ public class Main {
 	        	String s;
 	        	while ((s = stdError.readLine()) != null) {
 	        	    System.out.println(s);
+	        	    System.out.println(f.getName());
 	        	}
 	        	
 	        	p.waitFor();
